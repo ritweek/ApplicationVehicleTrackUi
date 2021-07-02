@@ -22,11 +22,7 @@ export class HomePageComponent implements OnInit {
 	  if (user) {
 		this.http.post<any>('https://localhost:5001/user/authenticate', { idToken: user.idToken }).subscribe((authToken: any) => {
             console.log(authToken);
-            window.localStorage.setItem('bearer', authToken.authToken);
-			
-			this.http.get<any>('https://localhost:5001/weatherforecast').subscribe((data: any) => {
-			this.hasApiAccess = true;
-			})		
+            window.localStorage.setItem('bearer', authToken.authToken);					
         })		  
 	  }
 	  this.user = user;
